@@ -23,7 +23,6 @@ router.put("/:id", (req, res) => {
   });
 });
 
-
 router.post("/", (req, res) => {
   Workout.create(req.body).then((data) => {
     res.json(data);
