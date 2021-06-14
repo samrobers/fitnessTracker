@@ -1,5 +1,4 @@
 const router = require("express").Router();
-
 const { Workout } = require("../../models");
 
 router.get("/", (req, res) => {
@@ -34,6 +33,9 @@ router.get("/range", (req, res) => {
     .addFields({
       totalDuration: { $sum: "$exercises.duration" },
     })
+    .sort({ day: "asc" })
+    .skip(3)
+    .limit(7)
     .then((data) => {
       console.log(data);
       res.json(data);
